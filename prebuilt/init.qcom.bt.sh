@@ -39,7 +39,7 @@ kill_hciattach ()
   # this shell doesn't exit now -- wait returns for normal exit
 }
 
-/system/bin/brcm_patchram_plus -d --patchram /etc/firmware/BCM43291A0_003.001.013.0141.0153.hcd /dev/ttyHS0
+/system/bin/brcm_patchram_plus -d --patchram /etc/firmware/BCM4330B1_002.001.003.0337.0338.hcd /dev/ttyHS0
 /system/bin/brcm_patchram_plus -d -baudrate 3000000 /dev/ttyHS0 
 exit_code_hci_qcomm_download=$?
 
@@ -58,7 +58,3 @@ wait $hciattach_pid
 logi "Bluetooth stopped"
 
 exit 0
-
-
-
-
