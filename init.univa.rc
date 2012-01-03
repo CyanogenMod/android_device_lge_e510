@@ -58,3 +58,6 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -iwlan0 -c/data/misc/wi
     group system wifi inet
     disabled
     oneshot
+
+on property:dev.bootcomplete=1
+    exec /system/bin/hwaddrs
