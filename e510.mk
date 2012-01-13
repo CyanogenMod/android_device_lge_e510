@@ -75,6 +75,7 @@ PRODUCT_PACKAGES += \
     gralloc.e510 \
     gps.e510 \
     hwaddrs \
+    copybit.msm7k \
     libOmxCore
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
