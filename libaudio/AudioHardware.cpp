@@ -102,6 +102,8 @@ static uint32_t SND_DEVICE_CARKIT=-1;
 static uint32_t SND_DEVICE_SPEAKER_FMRADIO=-1;
 static uint32_t SND_DEVICE_STEREO_HEADSET_FMRADIO=-1;
 static uint32_t SND_DEVICE_HEADSET_NO_MIC=-1;
+static uint32_t SND_DEVICE_VOICE_RECORDER=-1;
+static uint32_t SND_DEVICE_VOICE_RECORDER_HEADSET=-1;
 // ----------------------------------------------------------------------------
 
 AudioHardware::AudioHardware() :
@@ -142,6 +144,8 @@ AudioHardware::AudioHardware() :
                 CHECK_FOR(TTY_VCO);
                 CHECK_FOR(SPEAKER_FMRADIO);
                 CHECK_FOR(STEREO_HEADSET_FMRADIO);
+                CHECK_FOR(VOICE_RECORDER);
+                CHECK_FOR(VOICE_RECORDER_HEADSET);
 #undef CHECK_FOR
             }
         }
@@ -1276,11 +1280,11 @@ status_t AudioHardware::doRouting(AudioStreamInMSM72xx *input)
                 new_snd_device = SND_DEVICE_BT;
             } else if (inputDevice & AudioSystem::DEVICE_IN_WIRED_HEADSET) {
                     LOGI("Routing audio to Wired Headset\n");
-                    new_snd_device = SND_DEVICE_STEREO_HEADSET;
+                    new_snd_device = SND_DEVICE_VOICE_RECORDER_HEADSET;
             } else {
                 if (outputDevices & AudioSystem::DEVICE_OUT_SPEAKER) {
                     LOGI("Routing audio to Speakerphone\n");
-                    new_snd_device = SND_DEVICE_SPEAKER_MEDIA;
+                    new_snd_device = SND_DEVICE_VOICE_RECORDER;
                     new_post_proc_feature_mask = (ADRC_ENABLE | EQ_ENABLE | RX_IIR_ENABLE | MBADRC_ENABLE);
                 } else {
                     LOGI("Routing audio to Handset\n");
